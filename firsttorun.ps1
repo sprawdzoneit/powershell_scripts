@@ -1,6 +1,4 @@
-#first to run sript
-#v 1.0
-#sprawdzone.it
+#first to run sript by sprawdzone.it
 
 
 #rdp enable
@@ -27,10 +25,8 @@ $nname = (Get-NetAdapter -Name * -Physical).Name
 $lname = Read-Host -Prompt "Enter new network adapter name"
 Rename-NetAdapter $nname -NewName $lname
 
-
 #disable enhanced security in IE for admins
 Set-ItemProperty -Path 'HKLM:\SOFTWARE\Microsoft\Active Setup\Installed Components\{A509B1A7-37EF-4b3f-8CFC-4F3A74704073}' -name "IsInstalled" -value 0
-
 
 #change hostname
 $cname = Read-Host -Prompt "Enter new hostname"
