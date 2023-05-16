@@ -11,6 +11,10 @@ powercfg.exe -SETACTIVE 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c
 #set time zone
 Set-TimeZone -id "Central European Standard Time"
 
+#icmp ping IP4 / IP6
+New-NetFirewallRule -DisplayName "ICMP Allow Ping V4" -Direction Inbound -Protocol ICMPv4 -IcmpType 8 -RemoteAddress <localsubnet> -Action Allow
+New-NetFirewallRule -DisplayName "ICMP Allow Ping V6" -Direction Inbound -Protocol ICMPv6 -IcmpType 8 -RemoteAddress <localsubnet> -Action Allow
+
 #network file & printer sharing enable
 Set-NetFirewallRule -DisplayGroup "File And Printer Sharing" -Enabled True -Profile Any
 
