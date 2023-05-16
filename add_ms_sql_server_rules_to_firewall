@@ -1,0 +1,9 @@
+# sprawdzone.it
+# enabling SQL Server Ports in firewall
+
+New-NetFirewallRule -DisplayName “SQL Server” -Group "SQL Server" -Direction Inbound –Protocol TCP –LocalPort 1433 -Action allow 
+New-NetFirewallRule -DisplayName “SQL Admin Connection” -Group "SQL Server" -Direction Inbound –Protocol TCP –LocalPort 1434 -Action allow
+New-NetFirewallRule -DisplayName “SQL Database Management” -Group "SQL Server" -Direction Inbound –Protocol UDP –LocalPort 1434 -Action allow
+New-NetFirewallRule -DisplayName “SQL Service Broker” -Group "SQL Server" -Direction Inbound –Protocol TCP –LocalPort 4022 -Action allow
+New-NetFirewallRule -DisplayName “SQL Server Browse Button Service” -Group "SQL Server" -Direction Inbound –Protocol UDP –LocalPort 1433 -Action allow
+New-NetFirewallRule -DisplayName “SQL Server DBM/AG Endpoint” -Group "SQL Server" -Direction Inbound –Protocol TCP –LocalPort 5022 -Action allow
