@@ -11,6 +11,13 @@ powercfg.exe -SETACTIVE 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c
 #set time zone
 Set-TimeZone -id "Central European Standard Time"
 
+#set network address to first physical
+$ipifIndex = (Get-NetAdapter -Name * -Physical).ifIndex
+$ipaddress = Read-Host -Prompt "Enter IP Address" 
+$ipprefix = Read-Host -Prompt "Enter Prefix" 
+$ipgateway = Read-Host -Prompt "Enter Gateway Address" 
+New-NetIPAddress -InterfaceIndex 12 -IPAddress $ipaddress -PrefixLength $ipprefix -DefaultGateway $ipgateway
+
 #icmp ping IP4 / IP6
 New-NetFirewallRule -DisplayName "ICMP Allow Ping V4" -Direction Inbound -Protocol ICMPv4 -IcmpType 8 -Action Allow
 New-NetFirewallRule -DisplayName "ICMP Allow Ping V6" -Direction Inbound -Protocol ICMPv6 -IcmpType 8 -Action Allow
