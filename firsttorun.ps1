@@ -16,7 +16,13 @@ $ipifIndex = (Get-NetAdapter -Name * -Physical).ifIndex
 $ipaddress = Read-Host -Prompt "Enter IP Address" 
 $ipprefix = Read-Host -Prompt "Enter Prefix" 
 $ipgateway = Read-Host -Prompt "Enter Gateway Address" 
+$dns = @{
+InterfaceIndex = $ipifIndex
+ServerAddresses = ("1.1.1.1","8.8.8.8")
+}
 New-NetIPAddress -InterfaceIndex $ipifIndex -IPAddress $ipaddress -PrefixLength $ipprefix -DefaultGateway $ipgateway
+Set-DnsClientServerAddress @dns
+
 
 #icmp ping IP4 / IP6
 New-NetFirewallRule -DisplayName "ICMP Allow Ping V4" -Direction Inbound -Protocol ICMPv4 -IcmpType 8 -Action Allow
