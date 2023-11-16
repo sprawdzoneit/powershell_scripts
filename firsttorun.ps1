@@ -15,10 +15,12 @@ Set-TimeZone -id "Central European Standard Time"
 $ipifIndex = (Get-NetAdapter -Name * -Physical).ifIndex
 $ipaddress = Read-Host -Prompt "Enter IP Address" 
 $ipprefix = Read-Host -Prompt "Enter Prefix" 
-$ipgateway = Read-Host -Prompt "Enter Gateway Address" 
+$ipgateway = Read-Host -Prompt "Enter Gateway Address"
+$dns1 = = Read-Host -Prompt "Enter first DNS Address"
+$dns2 = = Read-Host -Prompt "Enter second DNS Address"
 $dns = @{
 InterfaceIndex = $ipifIndex
-ServerAddresses = ("1.1.1.1","8.8.8.8")
+ServerAddresses = ("$dns1","$dns2")
 }
 New-NetIPAddress -InterfaceIndex $ipifIndex -IPAddress $ipaddress -PrefixLength $ipprefix -DefaultGateway $ipgateway
 Set-DnsClientServerAddress @dns
