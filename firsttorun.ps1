@@ -16,8 +16,8 @@ $ipifIndex = (Get-NetAdapter -Name * -Physical).ifIndex
 $ipaddress = Read-Host -Prompt "Enter IP Address" 
 $ipprefix = Read-Host -Prompt "Enter Prefix" 
 $ipgateway = Read-Host -Prompt "Enter Gateway Address"
-$dns1 = = Read-Host -Prompt "Enter first DNS Address"
-$dns2 = = Read-Host -Prompt "Enter second DNS Address"
+$dns1 = Read-Host -Prompt "Enter first DNS Address"
+$dns2 = Read-Host -Prompt "Enter second DNS Address"
 $dns = @{
 InterfaceIndex = $ipifIndex
 ServerAddresses = ("$dns1","$dns2")
