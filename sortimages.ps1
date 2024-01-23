@@ -1,18 +1,20 @@
-#sort images by sprawdzone.it
+#sort images and create OCR txt files by sprawdzone.it
 
-#PowerShell script to sort images (screenshoot) from default folder in Windows and make txt file with content using bullitin OCR functon
-#sort files to sub folders with name from creation time year and month
+#PowerShell script to sort images (for example screenshoots) from folder and make txt file with content using bullitin OCR functon
+#sorting of files is based on creation date (year and month)
 
 #script need OCR module - run only once to install module for OCR
 #https://www.powershellgallery.com/packages/PsOcr/1.1.0
 #Install-Module -Name PsOcr 
+
+#Import Module
+Import-Module -Name PsOcr
 
 #path to screenshots folder in user profile
 $path = "C:\Users\user\Pictures\Screenshots"
 
 #get files from directory
 $files = Get-ChildItem -Path $path -File
-
 
 foreach ($file in $files) {
 
