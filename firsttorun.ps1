@@ -47,6 +47,12 @@ Rename-NetAdapter $nname -NewName $lname
 #disable enhanced security in IE for admins
 Set-ItemProperty -Path 'HKLM:\SOFTWARE\Microsoft\Active Setup\Installed Components\{A509B1A7-37EF-4b3f-8CFC-4F3A74704073}' -name "IsInstalled" -value 0
 
+#disable Diagnostics & feedback in Windows Server setings: Feedback frequency - never
+$registrypath = "HKCU:\SOFTWARE\Microsoft\Siuf\Rules"
+$registryname = "NumberOfSIUFInPeriod"
+$registryvalue = "00000000"
+New-ItemProperty -Path $RegistryPath -Name $registryname -Value $registryvalue -PropertyType DWORD -Force
+
 #change hostname
 $cname = Read-Host -Prompt "Enter new hostname"
 Rename-Computer -NewName $cname -Restart
