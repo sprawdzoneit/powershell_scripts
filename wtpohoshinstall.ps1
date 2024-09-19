@@ -1,6 +1,6 @@
 #Windows Terminal Oh My Posh and PowerShell 7 install by sprawdzone.it
+# full automate configure Oh My Posh on Windows Terminal
 
-# full automate configure
 # 1. download and install font
 # 2. install PowerShell 7
 # 3. install oh my posh 
