@@ -22,7 +22,7 @@ New-Item -Name tmpfonts -Path $env:TEMP -ItemType Directory
 
 #font pack download
 $file = $env:TEMP + "\tmpfonts\font.zip"
-Invoke-WebRequest $url -OutFile $file
+Invoke-WebRequest $fontsurl -OutFile $file
 
 #font copy and register
 $fontspath = $env:SystemRoot + "\Fonts"
